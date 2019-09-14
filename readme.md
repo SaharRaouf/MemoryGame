@@ -1,3 +1,11 @@
+## The application
+
+This application used for a study purpose to investigate the effects of using gamification (Progress bar, badges etc.) in digital teaching materials. Therefore, I have chosen to design the website so that it resembles the educational materials used in primary school today.   To achieve this, a combination of the programming languages JavaScript, HTML5 and PHP is used in a Laravel framework that is well suited for developing web pages with browser and platform compatibility.  The application looks like a regular web page with a navigation menu showing all different pages, game and log in option with different permissions, rapports and etc.
+
+## Contributing
+
+Thank you for considering contributing to this project. You will need laravel framework for this project. You can find all information in the sections below.
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
@@ -10,14 +18,3 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
 
-## Official Documentation
-
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
