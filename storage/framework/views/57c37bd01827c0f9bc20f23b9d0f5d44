@@ -1,0 +1,47 @@
+<?php $__env->startSection('content'); ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>Resultat</h1>
+
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Användare:</th>
+                        <th>Antal svar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Total/Genomsnitt</th>
+
+                            <td style="font-size: 200%">
+                                <?php echo e($total_users); ?>
+
+                            </td>
+                            <td style="font-size: 200%">
+                            <?php echo e($total_replies); ?> (total) / <?php echo e($total_replies / $total_users); ?> (genomsnitt)
+                            </td>
+                        </tr>
+                        <?php foreach($users as $user): ?>
+                                <tr>
+                                    <th scope="row"><?php echo e($user->id); ?></th>
+
+                                    <td>
+                                        <img src="<?php echo e($user->avatar); ?>" style="height:20px" /> <a href="/admin/users/<?php echo e($user->id); ?>"><?php echo e($user->name); ?></a>
+                                    </td>
+                                    <td>
+                                        <?php echo e(count($user->replies)); ?>
+
+                                    </td>
+                                </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

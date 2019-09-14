@@ -1,0 +1,35 @@
+<?php $__env->startSection('content'); ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>användare: <?php echo e($user->name); ?> (id: <?php echo e($user->id); ?>)</h1>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Framsteg i de ämnen</div>
+                    <div class="panel-body">
+                        <?php if(count($user->replies)): ?>
+                            <?php foreach($topics as $topic): ?>
+                                <h3><a href="<?php echo e(url('train/'. $topic->name . '/1')); ?>"><?php echo e($topic->title); ?></a></h3>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-success" style="width: <?php echo e($user->percentCorrectRepliesByTopic($topic)); ?>%">
+                                        <?php echo e($user->percentCorrectRepliesByTopic($topic)); ?>%
+
+                                    </div>
+                                    <div class="progress-bar progress-bar-danger" style="width: <?php echo e($user->percentIncorrectRepliesByTopic($topic)); ?>%">
+                                        <?php echo e($user->percentIncorrectRepliesByTopic($topic)); ?>%
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div style="text-align: center; color: grey;">
+                                <h3>Användaren svarar inte</h3>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <?php echo '<pre>' . var_export($user, true) . '</pre>'; ?>
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

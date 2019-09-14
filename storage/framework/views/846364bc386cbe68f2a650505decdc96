@@ -1,0 +1,98 @@
+<?php $__env->startSection('content'); ?>
+    <?php echo Form::open(['url'=> 'inquiry']); ?>
+
+<h1>Enkät</h1>
+
+    <!-- body for input -->
+    <form method="post" action="/inquiry">
+    <div class="form-group">
+        <div class="controls">
+
+            <?php echo Form::label('gender', 'Kön', array('class' => 'control-label')); ?>
+
+            <label class="radio">
+                <?php echo Form::radio('gender', 'M'); ?> Kille
+            </label>
+
+            <label class="radio">
+                <?php echo Form::radio('gender', 'F'); ?> Tjej
+            </label>
+        </div>
+    </div>
+        <div class="form-group ">
+            <?php echo Form::label('birth_date', 'Hur gammal är du?'); ?>
+
+
+            <?php echo Form::input('number','birth_date', $value = null, $options = array()); ?>
+
+        </div>
+    <div class="form-group">
+        <?php echo Form::label('Question1', '1-Har ni varsin Surfplatta på skolan?', array('class' => 'control-label')); ?>
+
+        <label class="radio">
+            <?php echo Form::radio('answer1', '1'); ?> Ja
+        </label>
+        <label class="radio">
+            <?php echo Form::radio('answer1', '0'); ?> Nej
+        </label>
+    </div>
+    <div class="form-group">
+        <?php echo Form::label('Question2', '2-Gör du skoluppgifter på en dator eller en surfplatta?', array('class' => 'control-label')); ?>
+
+        <label class="radio">
+            <?php echo Form::radio('answer2', '1'); ?> Ja
+        </label>
+        <label class="radio">
+            <?php echo Form::radio('answer2', '0'); ?> Nej
+        </label>
+    </div>
+    <div class="form-group">
+        <?php echo Form::label('Question3', '3-Pratar ni ett annat språk(modersmål) hemma?', array('class' => 'control-label')); ?>
+
+        <label class="radio">
+            <?php echo Form::radio('answer3', '1'); ?> Ja
+        </label>
+        <label class="radio">
+            <?php echo Form::radio('answer3', '0'); ?> Nej
+        </label>
+    </div>
+    <div class="form-group">
+        <?php echo Form::label('Question4', '4-Känner du till Studi.se?', array('class' => 'control-label')); ?>
+
+        <label class="radio">
+            <?php echo Form::radio('answer4', '1'); ?> Ja
+        </label>
+        <label class="radio">
+            <?php echo Form::radio('answer4', '0'); ?> Nej
+        </label>
+    </div>
+        <div class="form-group ">
+            <?php echo Form::label('answer5', '5-Hur länge spelar du ett dataspel varje dag?'); ?>
+
+
+            <?php echo Form::input('number','answer5', $value = null, $options = array()); ?><label>timme\timmar</label>
+        </div>
+        <div class="form-group ">
+            <?php echo Form::label('answer6', '6-Hur länge pluggar du varje dag?'); ?>
+
+            <?php echo Form::input('number','answer6', $value = null, $options = array()); ?><label>timme\timmar</label>
+
+        </div>
+
+    <div class="form-group ">
+        <?php echo Form::label('body', 'Vill du göra dina läxor på surfplattan? Om ja, hur ska läxan vara?'); ?>
+
+        <?php echo Form::textarea('observation',null,['class'=> 'form-control']); ?>
+
+    </div>
+    <div class="form-group">
+        <?php echo Form::submit('klar!',['class'=> 'btn btn-primary form-control']); ?>
+
+    </div>
+</form>
+    <?php echo form::close(); ?>
+
+    <?php echo $__env->make('errors.list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo $__env->make('partial.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

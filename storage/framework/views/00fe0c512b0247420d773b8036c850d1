@@ -1,0 +1,17 @@
+<?php $__env->startSection('content'); ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>New Topic</h1>
+
+                <?php echo $__env->make('errors.list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                <?php echo Form::open(['url' => action("TopicsController@store")]); ?>
+
+                    <?php echo $__env->make('topics.form', ['submitButtonText' => 'Create Topic'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                <?php echo Form::close(); ?>
+
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

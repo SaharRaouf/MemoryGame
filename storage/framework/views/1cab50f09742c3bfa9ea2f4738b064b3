@@ -1,0 +1,62 @@
+<?php $__env->startSection('content'); ?>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h1><?php echo e($baseTopic->title); ?>: <?php echo e($topic->title); ?></h1>
+
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped" style="width:<?php echo e(( $questionNumber * 100 ) / count($topic->questions)); ?>%">
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Fråga #<?php echo e($questionNumber); ?> <div class="pull-right"><?php echo e($questionNumber); ?> från <?php echo e(count($topic->questions)); ?></div>
+                </div>
+                <div class="panel-body">
+                    <p class="lead"><?php echo $question->renderDescription(); ?></p>
+
+                    <?php echo Form::open(['class'=>'question ajax challenge ' . $question->question_type]); ?>
+
+                    <?php echo Form::hidden('questionId', $question->id); ?>
+
+
+                    <?php if($question->question_type == 'one_variant'): ?>
+                        <?php foreach($answers as $answer): ?>
+                            <div class="radio">
+                                <label>
+                                    <?php echo Form::radio('chosenAnswer', $answer->id, null, ['id' => $answer->id, 'class' => 'required']); ?>
+
+                                    <?php echo e($answer->description); ?>
+
+                                </label>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <?php foreach($answers as $key => $answer): ?>
+                            <div class="checkbox">
+                                <label>
+                                    <?php echo Form::checkbox('chosenAnswers[]', $answer->id, null, ['id' => $answer->id, 'class' => 'required']); ?>
+
+                                    <?php echo e($answer->description); ?>
+
+                                </label>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <?php echo Form::hidden('url', $next['url']); ?>
+
+                    <?php echo Form::submit('Submit', ['class'=>'btn btn-default']); ?>
+
+
+                    <p id="validation-error-container"></p>
+                    <?php echo Form::close(); ?>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

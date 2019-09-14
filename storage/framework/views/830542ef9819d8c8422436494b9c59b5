@@ -1,0 +1,17 @@
+<?php $__env->startSection('content'); ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>Ämne:</h1>
+                <?php foreach($baseTopics as $baseTopic): ?>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h2><a href="/train/<?php echo e($baseTopic->name); ?>"><?php echo e($baseTopic->title); ?></a></h2>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

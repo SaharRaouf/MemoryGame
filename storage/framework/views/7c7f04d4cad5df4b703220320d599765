@@ -1,0 +1,38 @@
+
+    <style>
+    body{
+        padding-left: 130px;
+    }
+    .outer {
+
+        background-color: grey;
+        width: 1000px;
+        height: 30px;
+    }
+
+    .inner {
+        width: 330px ;
+        height: 30px;
+        display:block;
+        background-color: green;
+    }
+
+    .inner.right {
+        width:<?php $totalSteps  ?> ;
+        height: 30px;
+        background-color: green;
+        border-right:springgreen;
+    }
+
+    .inner.wrong {
+        background-color: red;
+    }
+</style>
+
+
+<div class="outer">
+
+    <div class="inner"> <?php echo (1/3)*100; ?>%</div>
+
+</div>
+

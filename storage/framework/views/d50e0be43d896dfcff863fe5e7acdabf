@@ -1,0 +1,43 @@
+<?php $__env->startSection('content'); ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+
+                <?php if(Session::has('success')): ?>
+                    <div class="alert alert-success" role="alert">
+                        <?php echo e(Session::get('success')); ?>
+
+                    </div>
+                <?php endif; ?>
+
+                <h1>Topics <a href="<?php echo e(action('TopicsController@create')); ?>" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New</a></h1>
+                <table class="table table-bordered">
+                    <?php foreach($topics as $topic): ?>
+                        <div>
+                            <tr>
+                                <td>
+                                    <?php if($topic->baseTopic): ?>
+                                        <div class="pull-right"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> <?php echo e($topic->baseTopic->title); ?></div>
+                                    <?php endif; ?>
+                                    <h3 class="list-group-item-heading"><?php echo e($topic->title); ?></h3>
+                                    <p class="list-group-item-text"><?php echo e($topic->description); ?></p>
+                                </td>
+                                <td>
+                                    <a href="<?php echo e(url('admin/topics/' . $topic->id . '/edit' )); ?>" class="btn btn-default"><span class="glyphicon glyphicon-edit" aria-hidden="true">Edit</span></a>
+                                    <?php echo Form::open(['url' => action('TopicsController@destroy', $topic->id), 'method' => 'delete']); ?>
+
+                                    <?php echo Form::submit('Delete', ['class'=>'btn btn-danger pull-right']); ?>
+
+                                    <?php echo Form::close(); ?>
+
+                                </td>
+                            </tr>
+                        </div>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

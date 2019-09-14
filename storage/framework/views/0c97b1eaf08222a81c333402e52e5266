@@ -1,0 +1,17 @@
+<?php $__env->startSection('content'); ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>Edit: <?php echo e($baseTopic->title); ?></h1>
+
+                <?php echo $__env->make('errors.list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                <?php echo Form::model($baseTopic, ['method' => 'PATCH', 'url' => [ action("BaseTopicsController@update", $baseTopic->id) ]]); ?>
+
+                <?php echo $__env->make('base-topics.form', ['submitButtonText' => 'Update Base Topic'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                <?php echo Form::close(); ?>
+
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

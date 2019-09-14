@@ -1,0 +1,19 @@
+<?php $__env->startSection('content'); ?>
+
+    <div>
+        <?php foreach($videos as $video): ?>
+            <br><br><br>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo e($video -> youtube_url); ?>" frameborder="0" allowfullscreen></iframe>
+            <h2><?php echo e($video->name); ?></h2>
+            <h3>Årskurs:  <?php echo e($video->grade); ?> </h3>
+            <h5>Instruktion:<?php echo e($video->description); ?></h5><br>
+            <h4>Se hur mycket du har lärt dig:</h4>
+            <div>
+            <a href="<?php echo e(url('train')); ?>" class="btn btn-warning" role="button" >tryck här!</a>
+            </div>
+
+        <?php endforeach; ?>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

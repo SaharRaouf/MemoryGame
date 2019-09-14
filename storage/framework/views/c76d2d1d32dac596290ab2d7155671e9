@@ -1,0 +1,14 @@
+<style>
+    .footer{
+        padding-top: 500px;
+    }
+</style>
+<td class="footer">
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Bra jobbat!</h1>
+            <p>För att avsluta, svara på några frågor.</p>
+
+        <a href="<?php echo e(URL::to('inquiry/')); ?>" class="btn btn-primary">ok!</a>
+    </div>  </div>
+</td>

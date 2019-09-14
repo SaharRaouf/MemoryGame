@@ -1,0 +1,68 @@
+<?php $__env->startSection('content'); ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                
+                <h4>Först lyssna på lektionen :</h4>
+                <div>
+                    <a href="<?php echo e(url('videos')); ?>" class="btn btn-warning" role="button" >tryck här!</a>
+                </div>
+                <h1>resultat</h1>
+
+                <?php foreach($baseTopics as $baseTopic): ?>
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><?php echo e($baseTopic->title); ?></div>
+                        <div class="panel-body">
+                            <?php if(count($user->replies)): ?>
+                                <?php foreach($baseTopic->topics as $topic): ?>
+                                    <h3><a href="<?php echo e(url('train/'. $baseTopic->name . '/' . $topic->name . '/1')); ?>"><?php echo e($topic->title); ?></a></h3>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" style="width: <?php echo e($user->percentCorrectRepliesByTopic($topic)); ?>%">
+                                            <?php echo e($user->percentCorrectRepliesByTopic($topic)); ?>%
+
+                                        </div>
+                                        <div class="progress-bar progress-bar-danger" style="width: <?php echo e($user->percentIncorrectRepliesByTopic($topic)); ?>%">
+                                            <?php echo e($user->percentIncorrectRepliesByTopic($topic)); ?>%
+                                        </div>
+                                    </div>
+                                <div> <?php if( ($user->percentCorrectRepliesByTopic($topic))=='100'): ?>
+                                        <img src="<?php echo e(asset('images/nr1.png')); ?>"  />
+                                          <?php elseif(($user->percentCorrectRepliesByTopic($topic))>='70' && ($user->percentCorrectRepliesByTopic($topic))<'100'): ?>
+                                        <img src="<?php echo e(asset('images/golden.png')); ?>"  />
+                                    <?php elseif(($user->percentCorrectRepliesByTopic($topic))>='50' && ($user->percentCorrectRepliesByTopic($topic))<'70'): ?>
+                                        <img src="<?php echo e(asset('images/silver.png')); ?>"  />
+                                    <?php elseif(($user->percentCorrectRepliesByTopic($topic))>='30' && ($user->percentCorrectRepliesByTopic($topic))<'50'): ?>
+                                        <img src="<?php echo e(asset('images/bronz.png')); ?>"  />
+                                    <?php elseif(($user->percentCorrectRepliesByTopic($topic))>='10' && ($user->percentCorrectRepliesByTopic($topic))<'30'): ?>
+                                        <img src="<?php echo e(asset('images/nr0.jpg')); ?>"  />
+                                        <?php else: ?>
+                                        <img src="<?php echo e(asset('images/noAnswer.png')); ?>"  />
+                                    <?php endif; ?>
+                                </div>
+
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <div style="text-align: center; color: grey;">
+                                    <h3>Svara på frågorna och se hur mycket du klarar av!</h3>
+                                    <p class="lead" >gå till frågorna:<a href="/train">här</a>.</p>
+                                </div>
+                            <?php endif; ?>
+
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+                <h4>Glöm inte att svara på enkäten :</h4>
+                <div>
+                    <a href="<?php echo e(url('inquiry')); ?>" class="btn btn-warning" role="button" >tryck här!</a>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <?php echo $__env->make('partial.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

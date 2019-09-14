@@ -1,0 +1,12 @@
+<?php $__env->startSection('content'); ?>
+    <h2>Quiz:</h2>
+
+    <article>
+        <h2>
+            <?php echo e($quizzes->quiz_name); ?>
+
+        </h2>
+        
+    </article>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

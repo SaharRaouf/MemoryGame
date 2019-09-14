@@ -1,0 +1,20 @@
+<?php $__env->startSection('content'); ?>
+
+    <div id="quizlinks">
+        <li><?php echo Html::link('quizzes/create', 'Create Quiz', array('class' => 'quizcreate')); ?><li>
+    </div>
+
+
+    <p>
+        Quiz List:
+    </p>
+
+    <ul>
+        <?php foreach($nextQuiz as $quiz): ?>
+            <li id="quizlist"><a><?php echo e($quiz->id,' ',$quiz->quiz_name); ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master1', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,17 @@
+<?php $__env->startSection('content'); ?>
+    <h1>Create a new quiz</h1>
+    <hr/>
+    <?php echo Form::open(array('url'=>'quizzes/create')); ?>
+
+    <?php echo $__env->make('quizzes.form',['submitButtonText'=>'Create a quiz'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo Form::close(); ?>
+
+    <?php echo $__env->make('errors.list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+
+
+
+
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

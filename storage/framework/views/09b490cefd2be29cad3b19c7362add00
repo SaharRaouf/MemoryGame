@@ -1,0 +1,21 @@
+<?php $__env->startSection('content'); ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1><?php echo e($baseTopic->title); ?></h1>
+
+                <div class="list-group">
+                    <?php foreach($topics as $topic): ?>
+                        <a href="<?php echo e(url('train/'. $baseTopic->name . '/' . $topic->name . '/1')); ?>" class="list-group-item">
+                            <span class="badge"><?php echo e(count($topic->questions)); ?></span>
+                            <h3 class="list-group-item-heading"><?php echo e($topic->title); ?></h3>
+                            <p class="list-group-item-text"><?php echo e($topic->description); ?></p>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,68 @@
+<?php echo $__env->make('/quizzes/progressbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->startSection('content'); ?>
+    <style>
+
+        h2{
+            color:#006400;
+        }
+        h3{
+            color: #000066;
+        }
+        .each-quiz{
+            background:#e1ecfe;
+        }
+    </style>
+    <h2>Quiz:</h2>
+    <?php echo Form::open(array('action' => array('ResultController@store', $nextQuiz))); ?>
+
+
+    <input type="hidden" name="quiz_id" value=<?php echo $nextQuiz->id; ?> />
+
+        <article class="each-quiz">
+            <h3>
+                <?php echo $nextQuiz->id; ?>
+
+            </h3>
+            <h3>
+
+                <?php echo e($nextQuiz->quiz_name); ?>
+
+            </h3>
+            <div class="form-group">
+
+                <?php echo Form::radio('answer','true'); ?><h4><?php echo e($nextQuiz->answer); ?></h4>
+            </div>
+            <div class="form-group">
+
+                <?php echo Form::radio('answer','false'); ?><h4><?php echo e($nextQuiz->choice1); ?></h4>
+            </div>
+            <div class="form-group">
+
+                <?php echo Form::radio('answer','false'); ?><h4><?php echo e($nextQuiz->choice2); ?></h4>
+            </div>
+            <div class="form-group">
+
+                <?php echo Form::radio('answer','false'); ?><h4><?php echo e($nextQuiz->choice3); ?></h4>
+            </div>
+            <?php if($lastStep): ?>
+            <div><?php echo Form::submit('Submit ',['class'=> 'btn btn-primary form-control']); ?></div>
+            <?php endif; ?>
+            <div><button type="submit" class="btn btn-success">
+                <i class="fa-trash"></i>
+                    <?php echo Html::linkAction('QuizController@show', 'Next', array($nextQuiz->id),array('class'=>'btn btn-link')); ?>
+
+
+                </button>
+            </div>
+        </article>
+
+
+
+    <?php echo Form::close(); ?>
+
+
+
+   <?php echo $__env->make('/quizzes/footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

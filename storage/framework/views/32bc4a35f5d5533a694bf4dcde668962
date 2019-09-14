@@ -1,0 +1,31 @@
+
+<div class="span16">
+    <ul class="breadcrumb span6">
+        <li>
+            <a href="<?php echo e(URL::to('questions')); ?>">Questions</a> <span class="divider">/</span>
+        </li>
+        <li class="active">New Question</li>
+    </ul>
+</div>
+
+<?php echo e(Form::open(null, 'post', array('class' => 'form-stacked span16'))); ?>
+
+<fieldset>
+    <div class="clearfix">
+        <?php echo e(Form::label('title', 'Title')); ?>
+
+
+        <div class="input">
+            <?php echo e(Form::text('title', Input::old('title'), array('class' => 'span6'))); ?>
+
+        </div>
+    </div>
+
+    <div class="actions">
+        <?php echo e(Form::submit('Save', array('class' => 'btn primary'))); ?>
+
+
+        or <a href="<?php echo e(URL::to(Request::referrer())); ?>">Cancel</a>
+    </div>
+</fieldset>
+<?php echo e(Form::close()); ?>
